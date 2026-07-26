@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+
+    h1.mb-4 Return Asset
+
+    form(method="POST" action="/returns/add")
+
+        .mb-3
+
+            label.form-label Issued Asset
+
+            select.form-select(name="issueId")
+
+                each issue in issues
+
+                    option(value=issue.id)
+                        = issue.Employee.name + " - " + issue.Asset.assetName
+
+        .mb-3
+
+            label.form-label Return Date
+
+            input.form-control(
+                type="date"
+                name="returnDate"
+                required
+            )
+
+        .mb-3
+
+            label.form-label Remarks
+
+            textarea.form-control(name="remarks")
+
+        button.btn.btn-success(type="submit")
+            | Return Asset

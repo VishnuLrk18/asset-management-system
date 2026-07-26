@@ -1,0 +1,67 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+
+        h2 Asset Master
+
+        a.btn.btn-primary(href="/assets/add")
+            | + Add Asset
+
+    table.table.table-bordered.table-striped.table-hover
+
+        thead.table-dark
+
+            tr
+                th ID
+                th Asset Code
+                th Asset Name
+                th Category
+                th Serial No
+                th Make
+                th Model
+                th Cost
+                th Status
+                th Action
+
+        tbody
+
+            if assets.length === 0
+
+                tr
+                    td.text-center(colspan="10")
+                        | No Assets Found
+
+            else
+
+                each asset in assets
+
+                    tr
+
+                        td= asset.id
+                        td= asset.assetCode
+                        td= asset.assetName
+                        td= asset.Category ? asset.Category.categoryName : ""
+
+                        td= asset.serialNumber
+                        td= asset.make
+                        td= asset.model
+                        td= asset.purchaseCost
+
+                        td
+                            if asset.status
+                                span.badge.bg-success Available
+                            else
+                                span.badge.bg-danger Unavailable
+
+                        td
+
+                            a.btn.btn-warning.btn-sm.me-2(
+                                href="/assets/edit/" + asset.id
+                            ) Edit
+
+                            a.btn.btn-danger.btn-sm(
+                                href="/assets/delete/" + asset.id
+                                onclick="return confirm('Delete this asset?')"
+                            ) Delete

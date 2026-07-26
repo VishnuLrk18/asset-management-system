@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+
+        h2 Employee Master
+
+        a.btn.btn-primary(href="/employees/add")
+            | + Add Employee
+
+    table.table.table-bordered.table-striped.table-hover
+
+        thead.table-dark
+            tr
+                th ID
+                th Employee Code
+                th Name
+                th Email
+                th Phone
+                th Department
+                th Status
+                th Action
+
+        tbody
+
+            if employees.length === 0
+
+                tr
+                    td.text-center(colspan="8")
+                        | No Employees Found
+
+            else
+
+                each emp in employees
+
+                    tr
+                        td= emp.id
+                        td= emp.employeeCode
+                        td= emp.name
+                        td= emp.email
+                        td= emp.phone
+                        td= emp.department
+
+                        td
+                            if emp.status
+                                span.badge.bg-success Active
+                            else
+                                span.badge.bg-danger Inactive
+
+                        td
+                            a.btn.btn-warning.btn-sm.me-2(
+                                href="/employees/edit/" + emp.id
+                            ) Edit
+
+                            a.btn.btn-danger.btn-sm(
+                                href="/employees/delete/" + emp.id
+                                onclick="return confirm('Are you sure you want to delete this employee?')"
+                            ) Delete

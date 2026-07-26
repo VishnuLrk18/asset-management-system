@@ -1,0 +1,83 @@
+extends ../layout
+
+block content
+
+    h2.mb-4 Edit Asset
+
+    form(action="/assets/edit/" + asset.id method="POST")
+
+        .row
+
+            .col-md-6.mb-3
+                label Asset Code
+                input.form-control(
+                    type="text"
+                    name="assetCode"
+                    value=asset.assetCode
+                    required
+                )
+
+            .col-md-6.mb-3
+                label Asset Name
+                input.form-control(
+                    type="text"
+                    name="assetName"
+                    value=asset.assetName
+                    required
+                )
+
+            .col-md-6.mb-3
+                label Category
+
+                select.form-select(name="categoryId")
+
+                    each category in categories
+
+                        option(
+                            value=category.id
+                            selected=asset.categoryId==category.id
+                        )
+                            = category.categoryName
+
+            .col-md-6.mb-3
+                label Serial Number
+                input.form-control(
+                    type="text"
+                    name="serialNumber"
+                    value=asset.serialNumber
+                )
+
+            .col-md-6.mb-3
+                label Make
+                input.form-control(
+                    type="text"
+                    name="make"
+                    value=asset.make
+                )
+
+            .col-md-6.mb-3
+                label Model
+                input.form-control(
+                    type="text"
+                    name="model"
+                    value=asset.model
+                )
+
+            .col-md-6.mb-3
+                label Purchase Date
+                input.form-control(
+                    type="date"
+                    name="purchaseDate"
+                    value=asset.purchaseDate
+                )
+
+            .col-md-6.mb-3
+                label Purchase Cost
+                input.form-control(
+                    type="number"
+                    name="purchaseCost"
+                    value=asset.purchaseCost
+                )
+
+        button.btn.btn-success(type="submit")
+            | Update Asset

@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+
+    h1.mb-4 Issue Asset
+
+    a.btn.btn-primary.float-end.mb-3(href="/issues/add")
+        | + Issue Asset
+
+    table.table.table-bordered
+
+        thead.table-dark
+
+            tr
+
+                th Employee
+
+                th Asset
+
+                th Issue Date
+
+                th Expected Return
+
+                th Status
+
+        tbody
+
+            each issue in issues
+
+                tr
+
+                    td= issue.Employee.name
+
+                    td= issue.Asset.assetName
+
+                    td= issue.issueDate
+
+                    td= issue.expectedReturnDate
+
+                    td
+                        span.badge.bg-warning.text-dark= issue.status

@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+
+    h2 Add Category
+
+    form(action="/categories/add" method="POST")
+
+        .mb-3
+            label Category Name
+            input.form-control(
+                type="text"
+                name="categoryName"
+                required
+            )
+
+        .mb-3
+            label Description
+            input.form-control(
+                type="text"
+                name="description"
+            )
+
+        button.btn.btn-success(type="submit")
+            | Save Category

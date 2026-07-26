@@ -1,0 +1,55 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+
+        h2 Category Master
+
+        a.btn.btn-primary(href="/categories/add")
+            | + Add Category
+
+    table.table.table-bordered.table-striped.table-hover
+
+        thead.table-dark
+
+            tr
+                th ID
+                th Category Name
+                th Description
+                th Status
+                th Action
+
+        tbody
+
+            if categories.length === 0
+
+                tr
+                    td.text-center(colspan="5")
+                        | No Categories Found
+
+            else
+
+                each category in categories
+
+                    tr
+
+                        td= category.id
+                        td= category.categoryName
+                        td= category.description
+
+                        td
+                            if category.status
+                                span.badge.bg-success Active
+                            else
+                                span.badge.bg-danger Inactive
+
+                        td
+                            a.btn.btn-warning.btn-sm.me-2(
+                                href="/categories/edit/" + category.id
+                            ) Edit
+
+                            a.btn.btn-danger.btn-sm(
+                                href="/categories/delete/" + category.id
+                                onclick="return confirm('Are you sure?')"
+                            ) Delete

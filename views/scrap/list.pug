@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+
+    h1.mb-4 Scrap Assets
+
+    table.table.table-bordered.table-striped
+
+        thead.table-dark
+
+            tr
+                th Asset Code
+                th Asset Name
+                th Status
+                th Action
+
+        tbody
+
+            each asset in assets
+
+                tr
+
+                    td= asset.assetCode
+
+                    td= asset.assetName
+
+                    td
+
+                        if asset.status == "Scrapped"
+                            span.badge.bg-danger Scrapped
+
+                        else
+                            span.badge.bg-success= asset.status
+
+                    td
+
+                        if asset.status != "Scrapped"
+
+                            form(action="/scrap/" + asset.id method="POST")
+
+                                button.btn.btn-danger.btn-sm(type="submit")
+                                    | Scrap
+
+                        else
+
+                            span.text-muted Already Scrapped

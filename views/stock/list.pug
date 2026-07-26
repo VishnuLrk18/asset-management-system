@@ -1,0 +1,76 @@
+extends ../layout
+
+block content
+
+    h1.mb-4 Stock View
+
+    .row.mb-4
+
+        .col-md-3
+            .card.bg-primary.text-white
+                .card-body
+                    h5 Total Assets
+                    h2= totalAssets
+
+        .col-md-3
+            .card.bg-success.text-white
+                .card-body
+                    h5 Available
+                    h2= availableAssets
+
+        .col-md-3
+            .card.bg-warning.text-dark
+                .card-body
+                    h5 Issued
+                    h2= issuedAssets
+
+        .col-md-3
+            .card.bg-danger.text-white
+                .card-body
+                    h5 Scrapped
+                    h2= scrappedAssets
+
+    table.table.table-bordered.table-striped
+
+        thead.table-dark
+
+            tr
+                th ID
+                th Asset Code
+                th Asset Name
+                th Category
+                th Make
+                th Model
+                th Cost
+                th Status
+
+        tbody
+
+            each asset in assets
+
+                tr
+
+                    td= asset.id
+                    td= asset.assetCode
+                    td= asset.assetName
+                    td= asset.Category ? asset.Category.categoryName : "-"
+                    td= asset.make
+                    td= asset.model
+                    td= asset.purchaseCost
+
+                    td
+
+                        if asset.status == "Available"
+                            span.badge.bg-success Available
+
+                        else if asset.status == "Issued"
+                            span.badge.bg-warning.text-dark Issued
+
+                        else if asset.status == "Returned"
+                            span.badge.bg-info Returned
+
+                        else if asset.status == "Scrapped"
+                            span.badge.bg-danger Scrapped
+
+                        else
+                            span.badge.bg-secondary= asset.status

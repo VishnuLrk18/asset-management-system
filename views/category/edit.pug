@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+
+    h2 Edit Category
+
+    form(action="/categories/edit/" + category.id method="POST")
+
+        .mb-3
+            label Category Name
+            input.form-control(
+                type="text"
+                name="categoryName"
+                value=category.categoryName
+                required
+            )
+
+        .mb-3
+            label Description
+            input.form-control(
+                type="text"
+                name="description"
+                value=category.description
+            )
+
+        button.btn.btn-success(type="submit")
+            | Save Changes

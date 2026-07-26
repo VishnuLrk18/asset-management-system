@@ -1,0 +1,49 @@
+extends ../layout
+
+block content
+
+    h2 Edit Employee
+
+    form(method="POST")
+
+        .mb-3
+            label Employee Code
+            input.form-control(
+                type="text"
+                name="employeeCode"
+                value=employee.employeeCode
+            )
+
+        .mb-3
+            label Name
+            input.form-control(
+                type="text"
+                name="name"
+                value=employee.name
+            )
+
+        .mb-3
+            label Email
+            input.form-control(
+                type="email"
+                name="email"
+                value=employee.email
+            )
+
+        .mb-3
+            label Phone
+            input.form-control(
+                type="text"
+                name="phone"
+                value=employee.phone
+            )
+
+        .mb-3
+            label Department
+            input.form-control(
+                type="text"
+                name="department"
+                value=employee.department
+            )
+
+        button.btn.btn-success Save Changes

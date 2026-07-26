@@ -1,0 +1,60 @@
+extends layout
+
+block content
+
+    h1.mb-5 Dashboard
+
+    .row
+
+        .col-md-3
+            .card.bg-primary.text-white.mb-4.shadow
+                .card-body
+                    h3 Employees
+                    h1.display-4= employeeCount
+
+        .col-md-3
+            .card.bg-success.text-white.mb-4.shadow
+                .card-body
+                    h3 Categories
+                    h1.display-4= categoryCount
+
+        .col-md-3
+            .card.bg-warning.text-dark.mb-4.shadow
+                .card-body
+                    h3 Assets
+                    h1.display-4= assetCount
+
+        .col-md-3
+            .card.bg-danger.text-white.mb-4.shadow
+                .card-body
+                    h3 Issued Assets
+                    h1.display-4= issuedCount
+
+    .card.shadow.mt-4
+
+        .card-header.bg-info.text-white
+            h3.mb-0 Welcome to Asset Management System
+
+        .card-body
+
+            p.lead
+
+                | This dashboard displays live statistics from your PostgreSQL database.
+
+            ul
+
+                li Employee Management
+
+                li Category Management
+
+                li Asset Management
+
+                li Issue Asset
+
+                li Return Asset
+
+                li Scrap Asset
+
+                li Asset History
+
+                li Stock View

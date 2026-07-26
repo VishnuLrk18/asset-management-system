@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+
+    h1.mb-4 Asset History
+
+    table.table.table-bordered.table-striped
+
+        thead.table-dark
+
+            tr
+                th Employee
+                th Asset
+                th Issue Date
+                th Return Date
+                th Current Status
+
+        tbody
+
+            each item in history
+
+                tr
+
+                    td= item.Employee ? item.Employee.name : "-"
+
+                    td= item.Asset ? item.Asset.assetName : "-"
+
+                    td= item.issueDate
+
+                    td= item.AssetReturn ? item.AssetReturn.returnDate : "-"
+
+                    td
+
+                        if item.status == "Issued"
+                            span.badge.bg-warning.text-dark Issued
+
+                        else if item.status == "Returned"
+                            span.badge.bg-success Returned
+
+                        else
+                            span.badge.bg-secondary= item.status
